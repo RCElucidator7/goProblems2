@@ -22,16 +22,21 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func guessGameHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm();
 	guess := r.FormValue("guess")
-	if guess > "20" {
-		guess = "Invalid Input"
-	}
 
 	rand.Seed(int64(time.Now().Nanosecond()))
 
 	if _, err := r.Cookie("target"); err != nil {
 		var randNum = ((rand.Int() % 19) + 1)
 
+		i, _ := strconv.Atoi(guess)
+
+
+		if i == randNum{
+			guess = "Correct!"
+		}
+
 		num := strconv.Itoa(randNum)
+
 
 		cookie := http.Cookie{
 			Name:  "target",
@@ -40,6 +45,7 @@ func guessGameHandler(w http.ResponseWriter, r *http.Request) {
 
 		http.SetCookie(w, &cookie)
 	}
+
 	m := text{Text: "Guess a number between 1 and 20: ", Guess: guess}
 	t, _ := template.ParseFiles("guess.tmpl")
 	t.Execute(w, m)
