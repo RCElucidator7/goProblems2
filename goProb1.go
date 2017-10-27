@@ -6,6 +6,7 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
+    //Prints Guessing game into the console
     fmt.Fprintf(w, "Guessing game!")
 }
 

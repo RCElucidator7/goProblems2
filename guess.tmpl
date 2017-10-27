@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <!--.Text will change depending on the user input-->
     <h2>{{.Text}}</h2>
 
     <!--Bootstrap-->
@@ -21,7 +22,9 @@
       <input type="submit" value="Guess">
     </form>
 
-    <p>You've guessed : {{.Guess}}</p>
+    <!--.Guess will change depending on if the user guesses correctly/incorrectly-->
+    <p>{{.Guess}}</p>
+    <a href = "index.html">{{.NewGame}}</a>
 
     <!--jQuery, Popper.js, Bootstrap JS-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
