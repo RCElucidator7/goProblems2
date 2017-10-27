@@ -50,6 +50,8 @@ func guessGameHandler(w http.ResponseWriter, r *http.Request) {
 	if userInput == number{
 		guess = "Thats Correct!"
 		newgame = "Click here to start a new game!"
+		//If user gets in here it will generate a new random number
+		number = ((rand.Int() % 19) + 1)
 	}else if userInput < number{
 		guess = "The number " + strconv.Itoa(userInput) + " was too low! Try another number!"
 	}else{
